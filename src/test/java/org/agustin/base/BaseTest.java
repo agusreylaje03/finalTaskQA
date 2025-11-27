@@ -7,11 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-<<<<<<< HEAD
 // Clase base para los tests que maneja la configuración y cierre del WebDriver
 
-=======
->>>>>>> e1e481bf313fc39e1877e1bc20b6da47566d1aa9
 public class BaseTest {
     protected WebDriver driver;
     protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
