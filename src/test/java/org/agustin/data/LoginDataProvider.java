@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class LoginDataProvider {
 
-    // ANTES: public static Object[][] loginData()
+
     public static Stream<Object[]> loginData() {  // ← CAMBIO
         return Stream.of(  // ← CAMBIO
                 new Object[]{"UC_001", "standard_user", "secret_sauce", "SUCCESS", "Login exitoso"},
