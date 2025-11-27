@@ -27,7 +27,11 @@ public class LoginTest extends BaseTest {
     @MethodSource("org.agustin.data.LoginDataProvider#loginData")
     public void testLoginScenarios(String uc, String username, String password,
                                    String expectedResult, String description) {
+<<<<<<< HEAD
         logger.info("Ejecutando " + uc + ": " + description + " en Thread: " + Thread.currentThread().getName());
+=======
+        logger.info("Ejecutando " + uc + ": " + description + " en Thread: " + Thread.currentThread().getName());  // ← NUEVO
+>>>>>>> e1e481bf313fc39e1877e1bc20b6da47566d1aa9
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToLoginPage();
@@ -46,6 +50,7 @@ public class LoginTest extends BaseTest {
                 loginPage.clearUsername();
                 loginPage.clearPassword();
                 loginPage.clickLoginButton();
+<<<<<<< HEAD
 
                 String usernameError = loginPage.getErrorMessage();
                 assertThat("Error message should indicate username is required or invalid credentials",
@@ -54,6 +59,10 @@ public class LoginTest extends BaseTest {
                                 containsString("Epic sadface: Username is required"),
                                 containsString("Epic sadface: Username and password do not match any user in this service")
                         ));
+=======
+                assertThat("Error message should be 'Username is required'",
+                        loginPage.getErrorMessage(), containsString("Username is required"));
+>>>>>>> e1e481bf313fc39e1877e1bc20b6da47566d1aa9
                 break;
 
             case "PASSWORD_REQUIRED":
@@ -61,6 +70,7 @@ public class LoginTest extends BaseTest {
                 loginPage.enterPassword("dummy_pass");
                 loginPage.clearPassword();
                 loginPage.clickLoginButton();
+<<<<<<< HEAD
 
                 String passwordError = loginPage.getErrorMessage();
                 assertThat("Error message should indicate password is required or invalid credentials",
@@ -71,6 +81,11 @@ public class LoginTest extends BaseTest {
                         ));
                 break;
 
+=======
+                assertThat("Error message should be 'Password is required'",
+                        loginPage.getErrorMessage(), containsString("Password is required"));
+                break;
+>>>>>>> e1e481bf313fc39e1877e1bc20b6da47566d1aa9
         }
     }
 }
