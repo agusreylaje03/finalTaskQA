@@ -1,0 +1,9 @@
+username,password,expectedResult,description
+standard_user,secret_sauce,SUCCESS,Usuario estándar con acceso completo
+locked_out_user,secret_sauce,LOCKED,Usuario bloqueado
+problem_user,secret_sauce,SUCCESS,Usuario con problemas en imágenes
+performance_glitch_user,secret_sauce,SUCCESS,Usuario con retraso en performance
+error_user,secret_sauce,SUCCESS,Usuario con errores en funcionalidad
+visual_user,secret_sauce,SUCCESS,Usuario para pruebas visuales
+standard_user,wrong_password,INVALID_CREDENTIALS,Contraseña incorrecta
+invalid_user,secret_sauce,INVALID_CREDENTIALS,Usuario no existente
