@@ -11,7 +11,6 @@ public class BaseTest {
     protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
     private static final long INTER_TEST_PAUSE_MS = 3000;
 
-    // Ya NO tiene @BeforeEach
     protected void setUpTest() {
         driver = WebDriverSingleton.getDriver();
         logger.info("========================================");

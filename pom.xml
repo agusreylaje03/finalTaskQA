@@ -1,74 +1,80 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.agustin</groupId>
-  <artifactId>finalTaskQA</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <groupId>org.agustin</groupId>
+    <artifactId>finalTaskQA</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>finalTaskQA</name>
-  <url>http://maven.apache.org</url>
+    <name>finalTaskQA</name>
+    <url>http://maven.apache.org</url>
 
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <parallel>classes</parallel>
+        <threadCount>2</threadCount>
+    </properties>
 
-  <properties>
-      <parallel>classes</parallel>
-      <threadCount>2</threadCount>
-  </properties>
+    <dependencies>
+        <!-- Selenium WebDriver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.18.1</version>
+        </dependency>
 
-<dependencies>
-    <!-- Selenium WebDriver -->
-    <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>4.18.1</version>
-    </dependency>
+        <!-- JUnit 5 (Jupiter) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.1</version>
+            <scope>test</scope>
+        </dependency>
 
-    <!-- JUnit 5 (Jupiter) -->
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter</artifactId>
-        <version>5.10.1</version>
-        <scope>test</scope>
-    </dependency>
+        <!-- JUnit 5 Parameterized Tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.10.1</version>
+            <scope>test</scope>
+        </dependency>
 
-    <!-- JUnit 5 Parameterized Tests -->
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-params</artifactId>
-        <version>5.10.1</version>
-        <scope>test</scope>
-    </dependency>
+        <!-- Hamcrest para assertions -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
 
-    <!-- Hamcrest para assertions -->
-    <dependency>
-        <groupId>org.hamcrest</groupId>
-        <artifactId>hamcrest</artifactId>
-        <version>2.2</version>
-        <scope>test</scope>
-    </dependency>
+        <!-- SLF4J para logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.9</version>
+        </dependency>
 
-    <!-- SLF4J para logging -->
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>2.0.9</version>
-    </dependency>
-    <dependency>
-        <groupId>ch.qos.logback</groupId>
-        <artifactId>logback-classic</artifactId>
-        <version>1.4.14</version>
-        <scope>test</scope>
-    </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.14</version>
+            <scope>test</scope>
+        </dependency>
 
-    <!-- WebDriverManager  -->
-    <dependency>
-        <groupId>io.github.bonigarcia</groupId>
-        <artifactId>webdrivermanager</artifactId>
-        <version>5.6.3</version>
-        <scope>test</scope>
-    </dependency>
-</dependencies>
+        <!-- WebDriverManager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.6.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -76,14 +82,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-                    <!-- Incluye explícitamente las clases concretas -->
                     <includes>
                         <include>**/*Test*.java</include>
                     </includes>
-
                     <parallel>${parallel}</parallel>
                     <threadCount>${threadCount}</threadCount>
-
                     <properties>
                         <configurationParameters>
                             junit.jupiter.execution.parallel.enabled=true
@@ -93,7 +96,6 @@
                             junit.jupiter.execution.parallel.config.fixed.parallelism=4
                         </configurationParameters>
                     </properties>
-
                     <forkCount>1C</forkCount>
                     <reuseForks>false</reuseForks>
                 </configuration>
@@ -115,5 +117,4 @@
             </properties>
         </profile>
     </profiles>
-
 </project>

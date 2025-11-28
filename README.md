@@ -81,4 +81,4 @@ mvn -Dtest=org.agustin.AppTest test
 
 ---
 
-If you want, I can also scaffold the suggested test structure (WebDriver factory, sample JUnit parameterized tests for UC-1/UC-2/UC-3, logging configuration and Maven Surefire parallel setup). Indica si quieres que genere el código de prueba y la configuración Maven ahora.
+If you want, I can also scaffold the suggested test structure (WebDriver factory, sample JUnit parameterized tests for UC-1/UC-2/UC-3, logging configuration and Maven Surefire parallel setup).
