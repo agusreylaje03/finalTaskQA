@@ -1,32 +1,28 @@
 package org.agustin.base;
 
 import org.agustin.webdriver.WebDriverSingleton;
-import org.junit.jupiter.api.AfterEach;  // ← CAMBIO
-import org.junit.jupiter.api.BeforeEach; // ← CAMBIO
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-// Clase base para los tests que maneja la configuración y cierre del WebDriver
 
 public class BaseTest {
     protected WebDriver driver;
     protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
     private static final long INTER_TEST_PAUSE_MS = 3000;
 
-    @BeforeEach
-    public void setUp() {
+    // Ya NO tiene @BeforeEach
+    protected void setUpTest() {
         driver = WebDriverSingleton.getDriver();
         logger.info("========================================");
-        logger.info("Thread ID: {}", Thread.currentThread().getId());  // ← NUEVO
-        logger.info("Thread Name: {}", Thread.currentThread().getName());  // ← NUEVO
-        logger.info("Browser: {}", System.getProperty("browser", "firefox"));
+        logger.info("Thread ID: {}", Thread.currentThread().getId());
+        logger.info("Thread Name: {}", Thread.currentThread().getName());
+        logger.info("Browser: {}", WebDriverSingleton.getBrowserThreadLocal());
         logger.info("========================================");
     }
 
     @AfterEach
     public void tearDown() {
-        // Pausa visual entre tests
         if (INTER_TEST_PAUSE_MS > 0) {
             logger.info("Esperando {} ms antes del siguiente test...", INTER_TEST_PAUSE_MS);
             try {

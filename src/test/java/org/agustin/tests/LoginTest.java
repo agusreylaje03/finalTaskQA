@@ -1,27 +1,15 @@
 package org.agustin.tests;
 
 import org.agustin.base.BaseTest;
-import org.agustin.data.LoginDataProvider;
 import org.agustin.pages.DashboardPage;
 import org.agustin.pages.LoginPage;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-public class LoginTest extends BaseTest {
-
-    @BeforeEach
-    public void setUpTest() {
-        super.setUp();
-        logger.info("========================================");
-        logger.info("Thread ID: {}", Thread.currentThread().getId());
-        logger.info("Thread Name: {}", Thread.currentThread().getName());
-        logger.info("Browser: {}", System.getProperty("browser", "firefox"));
-        logger.info("========================================");
-    }
+public abstract class LoginTest extends BaseTest {
 
     @ParameterizedTest(name = "{0}: {4}")
     @MethodSource("org.agustin.data.LoginDataProvider#loginData")
